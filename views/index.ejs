@@ -1,0 +1,40 @@
+<%- include("partials/header") -%>
+    
+    <div class="table-wrapper">
+        <% if (sanpham_tb.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="bg-dark">
+                    <tr>
+                        <th style="color: cornsilk;" scope="col">STT</th>
+                        <th style="color: cornsilk;" scope="col">IMAGE</th>
+                        <th style="color: cornsilk;" scope="col">SHOES COMPANY</th>
+                        <th style="color: cornsilk;" scope="col">STATUS</th>
+                        <th style="color: cornsilk;" scope="col">AMOUNT</th>
+                        <th style="color: cornsilk;" scope="col">PRICE</th>
+                        <th style="color: cornsilk;" scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sanpham_tb.forEach((player, index) => { %>
+                        <tr>
+                            <th scope="row"><%= player.STT %></th>
+                            <td><img src="/assets/img/<%= player.Image %>" class="rounded-circle player-img" alt=""></td>
+                            <td><%= player.Name %></td>
+                            <td><%= player.Status %></td>
+                            <td><%= player.Amount %></td>
+                            <td><%= player.Price %></td>                          
+                            <td>
+                                <a href="/edit/<%= player.STT %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= player.STT %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No product found. Go <a href="/add" >here</a> to add product.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
